@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="ptc" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.peusoft.ptc.model.Address</class>
+    <class>com.peusoft.ptc.model.Vat</class>
+    <class>com.peusoft.ptc.model.Project</class>
+    <class>com.peusoft.ptc.model.WorkDayTimeRecord</class>
+    <class>com.peusoft.ptc.model.Customer</class>
+    <class>com.peusoft.ptc.model.Config</class>
+    <class>com.peusoft.ptc.model.Versioninfo</class>
+    <class>com.peusoft.ptc.model.UserProjectActivityPrice</class>
+    <class>com.peusoft.ptc.model.CustomerContact</class>
+    <class>com.peusoft.ptc.model.ProjectActivity</class>
+    <class>com.peusoft.ptc.model.WorkDay</class>
+    <class>com.peusoft.ptc.model.Contract</class>
+    <class>com.peusoft.ptc.model.User</class>
+    <class>com.peusoft.ptc.model.ContactPerson</class>
+    <class>com.peusoft.ptc.model.ProjectState</class>
+    <class>com.peusoft.ptc.model.UserProjectActivity</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/ptc"/>
+      <property name="javax.persistence.jdbc.password" value="ptc"/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="javax.persistence.jdbc.user" value="ptc"/>
+    </properties>
+  </persistence-unit>
+</persistence>
