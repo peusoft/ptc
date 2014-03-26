@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.ListCustomerContactTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{i18n.ListCustomerContactEmpty}" rendered="#{customerContactController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{customerContactController.items.rowCount > 0}">
+                    <h:outputText value="#{customerContactController.pagination.pageFirstItem + 1}..#{customerContactController.pagination.pageLastItem + 1}/#{customerContactController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{customerContactController.previous}" value="#{i18n.Previous} #{customerContactController.pagination.pageSize}" rendered="#{customerContactController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{customerContactController.next}" value="#{i18n.Next} #{customerContactController.pagination.pageSize}" rendered="#{customerContactController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{customerContactController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListCustomerContactTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListCustomerContactTitle_customer}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.customer}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListCustomerContactTitle_contactPerson}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.contactPerson}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{customerContactController.prepareView}" value="#{i18n.ListCustomerContactViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{customerContactController.prepareEdit}" value="#{i18n.ListCustomerContactEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{customerContactController.destroy}" value="#{i18n.ListCustomerContactDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{customerContactController.prepareCreate}" value="#{i18n.ListCustomerContactCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.ListCustomerContactIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

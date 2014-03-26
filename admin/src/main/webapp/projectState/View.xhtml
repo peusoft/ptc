@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.ViewProjectStateTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{i18n.ViewProjectStateLabel_id}"/>
+                    <h:outputText value="#{projectStateController.selected.id}" title="#{i18n.ViewProjectStateTitle_id}"/>
+                    <h:outputText value="#{i18n.ViewProjectStateLabel_name}"/>
+                    <h:outputText value="#{projectStateController.selected.name}" title="#{i18n.ViewProjectStateTitle_name}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{projectStateController.destroyAndView}" value="#{i18n.ViewProjectStateDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{i18n.ViewProjectStateEditLink}"/>
+                <br />
+                <h:commandLink action="#{projectStateController.prepareCreate}" value="#{i18n.ViewProjectStateCreateLink}" />
+                <br />
+                <h:commandLink action="#{projectStateController.prepareList}" value="#{i18n.ViewProjectStateShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.ViewProjectStateIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

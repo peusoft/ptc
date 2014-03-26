@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.ListWorkDayTimeRecordTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{i18n.ListWorkDayTimeRecordEmpty}" rendered="#{workDayTimeRecordController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{workDayTimeRecordController.items.rowCount > 0}">
+                    <h:outputText value="#{workDayTimeRecordController.pagination.pageFirstItem + 1}..#{workDayTimeRecordController.pagination.pageLastItem + 1}/#{workDayTimeRecordController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{workDayTimeRecordController.previous}" value="#{i18n.Previous} #{workDayTimeRecordController.pagination.pageSize}" rendered="#{workDayTimeRecordController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{workDayTimeRecordController.next}" value="#{i18n.Next} #{workDayTimeRecordController.pagination.pageSize}" rendered="#{workDayTimeRecordController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{workDayTimeRecordController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListWorkDayTimeRecordTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListWorkDayTimeRecordTitle_beginTime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.beginTime}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListWorkDayTimeRecordTitle_endTime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.endTime}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListWorkDayTimeRecordTitle_amountOfHours}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.amountOfHours}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListWorkDayTimeRecordTitle_comment}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.comment}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListWorkDayTimeRecordTitle_day}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.day}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListWorkDayTimeRecordTitle_userProjectActivityId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userProjectActivityId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{workDayTimeRecordController.prepareView}" value="#{i18n.ListWorkDayTimeRecordViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{workDayTimeRecordController.prepareEdit}" value="#{i18n.ListWorkDayTimeRecordEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{workDayTimeRecordController.destroy}" value="#{i18n.ListWorkDayTimeRecordDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{workDayTimeRecordController.prepareCreate}" value="#{i18n.ListWorkDayTimeRecordCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.ListWorkDayTimeRecordIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

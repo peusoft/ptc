@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.ListWorkDayTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{i18n.ListWorkDayEmpty}" rendered="#{workDayController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{workDayController.items.rowCount > 0}">
+                    <h:outputText value="#{workDayController.pagination.pageFirstItem + 1}..#{workDayController.pagination.pageLastItem + 1}/#{workDayController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{workDayController.previous}" value="#{i18n.Previous} #{workDayController.pagination.pageSize}" rendered="#{workDayController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{workDayController.next}" value="#{i18n.Next} #{workDayController.pagination.pageSize}" rendered="#{workDayController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{workDayController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListWorkDayTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListWorkDayTitle_date}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.date}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListWorkDayTitle_beginTime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.beginTime}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListWorkDayTitle_endTime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.endTime}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListWorkDayTitle_user}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.user}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{workDayController.prepareView}" value="#{i18n.ListWorkDayViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{workDayController.prepareEdit}" value="#{i18n.ListWorkDayEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{workDayController.destroy}" value="#{i18n.ListWorkDayDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{workDayController.prepareCreate}" value="#{i18n.ListWorkDayCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.ListWorkDayIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

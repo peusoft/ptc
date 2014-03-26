@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.EditVatTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{i18n.EditVatLabel_vatId}" for="vatId" />
+                    <h:inputText id="vatId" value="#{vatController.selected.vatId}" title="#{i18n.EditVatTitle_vatId}" required="true" requiredMessage="#{i18n.EditVatRequiredMessage_vatId}"/>
+                    <h:outputLabel value="#{i18n.EditVatLabel_beginPeriod}" for="beginPeriod" />
+                    <h:inputText id="beginPeriod" value="#{vatController.selected.beginPeriod}" title="#{i18n.EditVatTitle_beginPeriod}" required="true" requiredMessage="#{i18n.EditVatRequiredMessage_beginPeriod}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{i18n.EditVatLabel_endPeriod}" for="endPeriod" />
+                    <h:inputText id="endPeriod" value="#{vatController.selected.endPeriod}" title="#{i18n.EditVatTitle_endPeriod}" required="true" requiredMessage="#{i18n.EditVatRequiredMessage_endPeriod}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{i18n.EditVatLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{vatController.selected.price}" title="#{i18n.EditVatTitle_price}" required="true" requiredMessage="#{i18n.EditVatRequiredMessage_price}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{vatController.update}" value="#{i18n.EditVatSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{i18n.EditVatViewLink}"/>
+                <br />
+                <h:commandLink action="#{vatController.prepareList}" value="#{i18n.EditVatShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.EditVatIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

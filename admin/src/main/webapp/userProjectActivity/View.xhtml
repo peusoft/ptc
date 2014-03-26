@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.ViewUserProjectActivityTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{i18n.ViewUserProjectActivityLabel_id}"/>
+                    <h:outputText value="#{userProjectActivityController.selected.id}" title="#{i18n.ViewUserProjectActivityTitle_id}"/>
+                    <h:outputText value="#{i18n.ViewUserProjectActivityLabel_budget}"/>
+                    <h:outputText value="#{userProjectActivityController.selected.budget}" title="#{i18n.ViewUserProjectActivityTitle_budget}"/>
+                    <h:outputText value="#{i18n.ViewUserProjectActivityLabel_user}"/>
+                    <h:outputText value="#{userProjectActivityController.selected.user}" title="#{i18n.ViewUserProjectActivityTitle_user}"/>
+                    <h:outputText value="#{i18n.ViewUserProjectActivityLabel_projectActivity}"/>
+                    <h:outputText value="#{userProjectActivityController.selected.projectActivity}" title="#{i18n.ViewUserProjectActivityTitle_projectActivity}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userProjectActivityController.destroyAndView}" value="#{i18n.ViewUserProjectActivityDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{i18n.ViewUserProjectActivityEditLink}"/>
+                <br />
+                <h:commandLink action="#{userProjectActivityController.prepareCreate}" value="#{i18n.ViewUserProjectActivityCreateLink}" />
+                <br />
+                <h:commandLink action="#{userProjectActivityController.prepareList}" value="#{i18n.ViewUserProjectActivityShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.ViewUserProjectActivityIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

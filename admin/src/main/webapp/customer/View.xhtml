@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.ViewCustomerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{i18n.ViewCustomerLabel_id}"/>
+                    <h:outputText value="#{customerController.selected.id}" title="#{i18n.ViewCustomerTitle_id}"/>
+                    <h:outputText value="#{i18n.ViewCustomerLabel_name}"/>
+                    <h:outputText value="#{customerController.selected.name}" title="#{i18n.ViewCustomerTitle_name}"/>
+                    <h:outputText value="#{i18n.ViewCustomerLabel_extName}"/>
+                    <h:outputText value="#{customerController.selected.extName}" title="#{i18n.ViewCustomerTitle_extName}"/>
+                    <h:outputText value="#{i18n.ViewCustomerLabel_address}"/>
+                    <h:outputText value="#{customerController.selected.address}" title="#{i18n.ViewCustomerTitle_address}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{customerController.destroyAndView}" value="#{i18n.ViewCustomerDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{i18n.ViewCustomerEditLink}"/>
+                <br />
+                <h:commandLink action="#{customerController.prepareCreate}" value="#{i18n.ViewCustomerCreateLink}" />
+                <br />
+                <h:commandLink action="#{customerController.prepareList}" value="#{i18n.ViewCustomerShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.ViewCustomerIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

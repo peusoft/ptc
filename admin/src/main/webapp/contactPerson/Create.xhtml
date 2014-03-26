@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.CreateContactPersonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{i18n.CreateContactPersonLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{contactPersonController.selected.id}" title="#{i18n.CreateContactPersonTitle_id}" required="true" requiredMessage="#{i18n.CreateContactPersonRequiredMessage_id}"/>
+                    <h:outputLabel value="#{i18n.CreateContactPersonLabel_title}" for="title" />
+                    <h:inputText id="title" value="#{contactPersonController.selected.title}" title="#{i18n.CreateContactPersonTitle_title}" />
+                    <h:outputLabel value="#{i18n.CreateContactPersonLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{contactPersonController.selected.name}" title="#{i18n.CreateContactPersonTitle_name}" required="true" requiredMessage="#{i18n.CreateContactPersonRequiredMessage_name}"/>
+                    <h:outputLabel value="#{i18n.CreateContactPersonLabel_sname}" for="sname" />
+                    <h:inputText id="sname" value="#{contactPersonController.selected.sname}" title="#{i18n.CreateContactPersonTitle_sname}" required="true" requiredMessage="#{i18n.CreateContactPersonRequiredMessage_sname}"/>
+                    <h:outputLabel value="#{i18n.CreateContactPersonLabel_tel}" for="tel" />
+                    <h:inputText id="tel" value="#{contactPersonController.selected.tel}" title="#{i18n.CreateContactPersonTitle_tel}" />
+                    <h:outputLabel value="#{i18n.CreateContactPersonLabel_mobile}" for="mobile" />
+                    <h:inputText id="mobile" value="#{contactPersonController.selected.mobile}" title="#{i18n.CreateContactPersonTitle_mobile}" />
+                    <h:outputLabel value="#{i18n.CreateContactPersonLabel_fax}" for="fax" />
+                    <h:inputText id="fax" value="#{contactPersonController.selected.fax}" title="#{i18n.CreateContactPersonTitle_fax}" />
+                    <h:outputLabel value="#{i18n.CreateContactPersonLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{contactPersonController.selected.email}" title="#{i18n.CreateContactPersonTitle_email}" />
+                    <h:outputLabel value="#{i18n.CreateContactPersonLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{contactPersonController.selected.address}" title="#{i18n.CreateContactPersonTitle_address}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contactPersonController.create}" value="#{i18n.CreateContactPersonSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{contactPersonController.prepareList}" value="#{i18n.CreateContactPersonShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.CreateContactPersonIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

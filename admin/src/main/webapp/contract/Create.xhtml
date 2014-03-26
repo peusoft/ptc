@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.CreateContractTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{i18n.CreateContractLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{contractController.selected.id}" title="#{i18n.CreateContractTitle_id}" required="true" requiredMessage="#{i18n.CreateContractRequiredMessage_id}"/>
+                    <h:outputLabel value="#{i18n.CreateContractLabel_number}" for="number" />
+                    <h:inputText id="number" value="#{contractController.selected.number}" title="#{i18n.CreateContractTitle_number}" required="true" requiredMessage="#{i18n.CreateContractRequiredMessage_number}"/>
+                    <h:outputLabel value="#{i18n.CreateContractLabel_obsolete}" for="obsolete" />
+                    <h:inputText id="obsolete" value="#{contractController.selected.obsolete}" title="#{i18n.CreateContractTitle_obsolete}" required="true" requiredMessage="#{i18n.CreateContractRequiredMessage_obsolete}"/>
+                    <h:outputLabel value="#{i18n.CreateContractLabel_user}" for="user" />
+                    <h:selectOneMenu id="user" value="#{contractController.selected.user}" title="#{i18n.CreateContractTitle_user}" required="true" requiredMessage="#{i18n.CreateContractRequiredMessage_user}">
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{i18n.CreateContractLabel_project}" for="project" />
+                    <h:selectOneMenu id="project" value="#{contractController.selected.project}" title="#{i18n.CreateContractTitle_project}" required="true" requiredMessage="#{i18n.CreateContractRequiredMessage_project}">
+                        <f:selectItems value="#{projectController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{i18n.CreateContractLabel_customerContact}" for="customerContact" />
+                    <h:selectOneMenu id="customerContact" value="#{contractController.selected.customerContact}" title="#{i18n.CreateContractTitle_customerContact}" required="true" requiredMessage="#{i18n.CreateContractRequiredMessage_customerContact}">
+                        <f:selectItems value="#{customerContactController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contractController.create}" value="#{i18n.CreateContractSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{contractController.prepareList}" value="#{i18n.CreateContractShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.CreateContractIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

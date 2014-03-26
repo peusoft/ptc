@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.CreateUserProjectActivityTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{i18n.CreateUserProjectActivityLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{userProjectActivityController.selected.id}" title="#{i18n.CreateUserProjectActivityTitle_id}" required="true" requiredMessage="#{i18n.CreateUserProjectActivityRequiredMessage_id}"/>
+                    <h:outputLabel value="#{i18n.CreateUserProjectActivityLabel_budget}" for="budget" />
+                    <h:inputText id="budget" value="#{userProjectActivityController.selected.budget}" title="#{i18n.CreateUserProjectActivityTitle_budget}" required="true" requiredMessage="#{i18n.CreateUserProjectActivityRequiredMessage_budget}"/>
+                    <h:outputLabel value="#{i18n.CreateUserProjectActivityLabel_user}" for="user" />
+                    <h:selectOneMenu id="user" value="#{userProjectActivityController.selected.user}" title="#{i18n.CreateUserProjectActivityTitle_user}" required="true" requiredMessage="#{i18n.CreateUserProjectActivityRequiredMessage_user}">
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{i18n.CreateUserProjectActivityLabel_projectActivity}" for="projectActivity" />
+                    <h:selectOneMenu id="projectActivity" value="#{userProjectActivityController.selected.projectActivity}" title="#{i18n.CreateUserProjectActivityTitle_projectActivity}" required="true" requiredMessage="#{i18n.CreateUserProjectActivityRequiredMessage_projectActivity}">
+                        <f:selectItems value="#{projectActivityController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userProjectActivityController.create}" value="#{i18n.CreateUserProjectActivitySaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{userProjectActivityController.prepareList}" value="#{i18n.CreateUserProjectActivityShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.CreateUserProjectActivityIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.CreateWorkDayTimeRecordTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{i18n.CreateWorkDayTimeRecordLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{workDayTimeRecordController.selected.id}" title="#{i18n.CreateWorkDayTimeRecordTitle_id}" required="true" requiredMessage="#{i18n.CreateWorkDayTimeRecordRequiredMessage_id}"/>
+                    <h:outputLabel value="#{i18n.CreateWorkDayTimeRecordLabel_beginTime}" for="beginTime" />
+                    <h:inputText id="beginTime" value="#{workDayTimeRecordController.selected.beginTime}" title="#{i18n.CreateWorkDayTimeRecordTitle_beginTime}" >
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{i18n.CreateWorkDayTimeRecordLabel_endTime}" for="endTime" />
+                    <h:inputText id="endTime" value="#{workDayTimeRecordController.selected.endTime}" title="#{i18n.CreateWorkDayTimeRecordTitle_endTime}" >
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{i18n.CreateWorkDayTimeRecordLabel_amountOfHours}" for="amountOfHours" />
+                    <h:inputText id="amountOfHours" value="#{workDayTimeRecordController.selected.amountOfHours}" title="#{i18n.CreateWorkDayTimeRecordTitle_amountOfHours}" required="true" requiredMessage="#{i18n.CreateWorkDayTimeRecordRequiredMessage_amountOfHours}"/>
+                    <h:outputLabel value="#{i18n.CreateWorkDayTimeRecordLabel_comment}" for="comment" />
+                    <h:inputText id="comment" value="#{workDayTimeRecordController.selected.comment}" title="#{i18n.CreateWorkDayTimeRecordTitle_comment}" />
+                    <h:outputLabel value="#{i18n.CreateWorkDayTimeRecordLabel_day}" for="day" />
+                    <h:selectOneMenu id="day" value="#{workDayTimeRecordController.selected.day}" title="#{i18n.CreateWorkDayTimeRecordTitle_day}" required="true" requiredMessage="#{i18n.CreateWorkDayTimeRecordRequiredMessage_day}">
+                        <f:selectItems value="#{workDayController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{i18n.CreateWorkDayTimeRecordLabel_userProjectActivityId}" for="userProjectActivityId" />
+                    <h:inputText id="userProjectActivityId" value="#{workDayTimeRecordController.selected.userProjectActivityId}" title="#{i18n.CreateWorkDayTimeRecordTitle_userProjectActivityId}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{workDayTimeRecordController.create}" value="#{i18n.CreateWorkDayTimeRecordSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{workDayTimeRecordController.prepareList}" value="#{i18n.CreateWorkDayTimeRecordShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.CreateWorkDayTimeRecordIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

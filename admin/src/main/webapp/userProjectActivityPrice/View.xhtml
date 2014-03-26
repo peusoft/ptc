@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.ViewUserProjectActivityPriceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{i18n.ViewUserProjectActivityPriceLabel_id}"/>
+                    <h:outputText value="#{userProjectActivityPriceController.selected.id}" title="#{i18n.ViewUserProjectActivityPriceTitle_id}"/>
+                    <h:outputText value="#{i18n.ViewUserProjectActivityPriceLabel_beginPeriod}"/>
+                    <h:outputText value="#{userProjectActivityPriceController.selected.beginPeriod}" title="#{i18n.ViewUserProjectActivityPriceTitle_beginPeriod}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{i18n.ViewUserProjectActivityPriceLabel_endPeriod}"/>
+                    <h:outputText value="#{userProjectActivityPriceController.selected.endPeriod}" title="#{i18n.ViewUserProjectActivityPriceTitle_endPeriod}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{i18n.ViewUserProjectActivityPriceLabel_price}"/>
+                    <h:outputText value="#{userProjectActivityPriceController.selected.price}" title="#{i18n.ViewUserProjectActivityPriceTitle_price}"/>
+                    <h:outputText value="#{i18n.ViewUserProjectActivityPriceLabel_listCnt}"/>
+                    <h:outputText value="#{userProjectActivityPriceController.selected.listCnt}" title="#{i18n.ViewUserProjectActivityPriceTitle_listCnt}"/>
+                    <h:outputText value="#{i18n.ViewUserProjectActivityPriceLabel_userProjectActivity}"/>
+                    <h:outputText value="#{userProjectActivityPriceController.selected.userProjectActivity}" title="#{i18n.ViewUserProjectActivityPriceTitle_userProjectActivity}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userProjectActivityPriceController.destroyAndView}" value="#{i18n.ViewUserProjectActivityPriceDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{i18n.ViewUserProjectActivityPriceEditLink}"/>
+                <br />
+                <h:commandLink action="#{userProjectActivityPriceController.prepareCreate}" value="#{i18n.ViewUserProjectActivityPriceCreateLink}" />
+                <br />
+                <h:commandLink action="#{userProjectActivityPriceController.prepareList}" value="#{i18n.ViewUserProjectActivityPriceShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.ViewUserProjectActivityPriceIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

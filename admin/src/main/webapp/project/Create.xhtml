@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.CreateProjectTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{i18n.CreateProjectLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{projectController.selected.id}" title="#{i18n.CreateProjectTitle_id}" required="true" requiredMessage="#{i18n.CreateProjectRequiredMessage_id}"/>
+                    <h:outputLabel value="#{i18n.CreateProjectLabel_number}" for="number" />
+                    <h:inputText id="number" value="#{projectController.selected.number}" title="#{i18n.CreateProjectTitle_number}" required="true" requiredMessage="#{i18n.CreateProjectRequiredMessage_number}"/>
+                    <h:outputLabel value="#{i18n.CreateProjectLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{projectController.selected.name}" title="#{i18n.CreateProjectTitle_name}" required="true" requiredMessage="#{i18n.CreateProjectRequiredMessage_name}"/>
+                    <h:outputLabel value="#{i18n.CreateProjectLabel_begin}" for="begin" />
+                    <h:inputText id="begin" value="#{projectController.selected.begin}" title="#{i18n.CreateProjectTitle_begin}" required="true" requiredMessage="#{i18n.CreateProjectRequiredMessage_begin}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{i18n.CreateProjectLabel_end}" for="end" />
+                    <h:inputText id="end" value="#{projectController.selected.end}" title="#{i18n.CreateProjectTitle_end}" required="true" requiredMessage="#{i18n.CreateProjectRequiredMessage_end}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{i18n.CreateProjectLabel_budget}" for="budget" />
+                    <h:inputText id="budget" value="#{projectController.selected.budget}" title="#{i18n.CreateProjectTitle_budget}" required="true" requiredMessage="#{i18n.CreateProjectRequiredMessage_budget}"/>
+                    <h:outputLabel value="#{i18n.CreateProjectLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{projectController.selected.description}" title="#{i18n.CreateProjectTitle_description}" />
+                    <h:outputLabel value="#{i18n.CreateProjectLabel_state}" for="state" />
+                    <h:selectOneMenu id="state" value="#{projectController.selected.state}" title="#{i18n.CreateProjectTitle_state}" required="true" requiredMessage="#{i18n.CreateProjectRequiredMessage_state}">
+                        <f:selectItems value="#{projectStateController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{projectController.create}" value="#{i18n.CreateProjectSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{projectController.prepareList}" value="#{i18n.CreateProjectShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.CreateProjectIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

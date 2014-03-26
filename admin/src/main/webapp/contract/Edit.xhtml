@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.EditContractTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{i18n.EditContractLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{contractController.selected.id}" title="#{i18n.EditContractTitle_id}" required="true" requiredMessage="#{i18n.EditContractRequiredMessage_id}"/>
+                    <h:outputLabel value="#{i18n.EditContractLabel_number}" for="number" />
+                    <h:inputText id="number" value="#{contractController.selected.number}" title="#{i18n.EditContractTitle_number}" required="true" requiredMessage="#{i18n.EditContractRequiredMessage_number}"/>
+                    <h:outputLabel value="#{i18n.EditContractLabel_obsolete}" for="obsolete" />
+                    <h:inputText id="obsolete" value="#{contractController.selected.obsolete}" title="#{i18n.EditContractTitle_obsolete}" required="true" requiredMessage="#{i18n.EditContractRequiredMessage_obsolete}"/>
+                    <h:outputLabel value="#{i18n.EditContractLabel_user}" for="user" />
+                    <h:selectOneMenu id="user" value="#{contractController.selected.user}" title="#{i18n.EditContractTitle_user}" required="true" requiredMessage="#{i18n.EditContractRequiredMessage_user}">
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{i18n.EditContractLabel_project}" for="project" />
+                    <h:selectOneMenu id="project" value="#{contractController.selected.project}" title="#{i18n.EditContractTitle_project}" required="true" requiredMessage="#{i18n.EditContractRequiredMessage_project}">
+                        <f:selectItems value="#{projectController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{i18n.EditContractLabel_customerContact}" for="customerContact" />
+                    <h:selectOneMenu id="customerContact" value="#{contractController.selected.customerContact}" title="#{i18n.EditContractTitle_customerContact}" required="true" requiredMessage="#{i18n.EditContractRequiredMessage_customerContact}">
+                        <f:selectItems value="#{customerContactController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{contractController.update}" value="#{i18n.EditContractSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{i18n.EditContractViewLink}"/>
+                <br />
+                <h:commandLink action="#{contractController.prepareList}" value="#{i18n.EditContractShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.EditContractIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.ViewContactPersonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{i18n.ViewContactPersonLabel_id}"/>
+                    <h:outputText value="#{contactPersonController.selected.id}" title="#{i18n.ViewContactPersonTitle_id}"/>
+                    <h:outputText value="#{i18n.ViewContactPersonLabel_title}"/>
+                    <h:outputText value="#{contactPersonController.selected.title}" title="#{i18n.ViewContactPersonTitle_title}"/>
+                    <h:outputText value="#{i18n.ViewContactPersonLabel_name}"/>
+                    <h:outputText value="#{contactPersonController.selected.name}" title="#{i18n.ViewContactPersonTitle_name}"/>
+                    <h:outputText value="#{i18n.ViewContactPersonLabel_sname}"/>
+                    <h:outputText value="#{contactPersonController.selected.sname}" title="#{i18n.ViewContactPersonTitle_sname}"/>
+                    <h:outputText value="#{i18n.ViewContactPersonLabel_tel}"/>
+                    <h:outputText value="#{contactPersonController.selected.tel}" title="#{i18n.ViewContactPersonTitle_tel}"/>
+                    <h:outputText value="#{i18n.ViewContactPersonLabel_mobile}"/>
+                    <h:outputText value="#{contactPersonController.selected.mobile}" title="#{i18n.ViewContactPersonTitle_mobile}"/>
+                    <h:outputText value="#{i18n.ViewContactPersonLabel_fax}"/>
+                    <h:outputText value="#{contactPersonController.selected.fax}" title="#{i18n.ViewContactPersonTitle_fax}"/>
+                    <h:outputText value="#{i18n.ViewContactPersonLabel_email}"/>
+                    <h:outputText value="#{contactPersonController.selected.email}" title="#{i18n.ViewContactPersonTitle_email}"/>
+                    <h:outputText value="#{i18n.ViewContactPersonLabel_address}"/>
+                    <h:outputText value="#{contactPersonController.selected.address}" title="#{i18n.ViewContactPersonTitle_address}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contactPersonController.destroyAndView}" value="#{i18n.ViewContactPersonDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{i18n.ViewContactPersonEditLink}"/>
+                <br />
+                <h:commandLink action="#{contactPersonController.prepareCreate}" value="#{i18n.ViewContactPersonCreateLink}" />
+                <br />
+                <h:commandLink action="#{contactPersonController.prepareList}" value="#{i18n.ViewContactPersonShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.ViewContactPersonIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

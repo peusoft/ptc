@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.ViewContractTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{i18n.ViewContractLabel_id}"/>
+                    <h:outputText value="#{contractController.selected.id}" title="#{i18n.ViewContractTitle_id}"/>
+                    <h:outputText value="#{i18n.ViewContractLabel_number}"/>
+                    <h:outputText value="#{contractController.selected.number}" title="#{i18n.ViewContractTitle_number}"/>
+                    <h:outputText value="#{i18n.ViewContractLabel_obsolete}"/>
+                    <h:outputText value="#{contractController.selected.obsolete}" title="#{i18n.ViewContractTitle_obsolete}"/>
+                    <h:outputText value="#{i18n.ViewContractLabel_user}"/>
+                    <h:outputText value="#{contractController.selected.user}" title="#{i18n.ViewContractTitle_user}"/>
+                    <h:outputText value="#{i18n.ViewContractLabel_project}"/>
+                    <h:outputText value="#{contractController.selected.project}" title="#{i18n.ViewContractTitle_project}"/>
+                    <h:outputText value="#{i18n.ViewContractLabel_customerContact}"/>
+                    <h:outputText value="#{contractController.selected.customerContact}" title="#{i18n.ViewContractTitle_customerContact}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contractController.destroyAndView}" value="#{i18n.ViewContractDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{i18n.ViewContractEditLink}"/>
+                <br />
+                <h:commandLink action="#{contractController.prepareCreate}" value="#{i18n.ViewContractCreateLink}" />
+                <br />
+                <h:commandLink action="#{contractController.prepareList}" value="#{i18n.ViewContractShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.ViewContractIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

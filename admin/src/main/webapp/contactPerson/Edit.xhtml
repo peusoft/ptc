@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.EditContactPersonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{i18n.EditContactPersonLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{contactPersonController.selected.id}" title="#{i18n.EditContactPersonTitle_id}" required="true" requiredMessage="#{i18n.EditContactPersonRequiredMessage_id}"/>
+                    <h:outputLabel value="#{i18n.EditContactPersonLabel_title}" for="title" />
+                    <h:inputText id="title" value="#{contactPersonController.selected.title}" title="#{i18n.EditContactPersonTitle_title}" />
+                    <h:outputLabel value="#{i18n.EditContactPersonLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{contactPersonController.selected.name}" title="#{i18n.EditContactPersonTitle_name}" required="true" requiredMessage="#{i18n.EditContactPersonRequiredMessage_name}"/>
+                    <h:outputLabel value="#{i18n.EditContactPersonLabel_sname}" for="sname" />
+                    <h:inputText id="sname" value="#{contactPersonController.selected.sname}" title="#{i18n.EditContactPersonTitle_sname}" required="true" requiredMessage="#{i18n.EditContactPersonRequiredMessage_sname}"/>
+                    <h:outputLabel value="#{i18n.EditContactPersonLabel_tel}" for="tel" />
+                    <h:inputText id="tel" value="#{contactPersonController.selected.tel}" title="#{i18n.EditContactPersonTitle_tel}" />
+                    <h:outputLabel value="#{i18n.EditContactPersonLabel_mobile}" for="mobile" />
+                    <h:inputText id="mobile" value="#{contactPersonController.selected.mobile}" title="#{i18n.EditContactPersonTitle_mobile}" />
+                    <h:outputLabel value="#{i18n.EditContactPersonLabel_fax}" for="fax" />
+                    <h:inputText id="fax" value="#{contactPersonController.selected.fax}" title="#{i18n.EditContactPersonTitle_fax}" />
+                    <h:outputLabel value="#{i18n.EditContactPersonLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{contactPersonController.selected.email}" title="#{i18n.EditContactPersonTitle_email}" />
+                    <h:outputLabel value="#{i18n.EditContactPersonLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{contactPersonController.selected.address}" title="#{i18n.EditContactPersonTitle_address}" />
+                </h:panelGrid>
+                <h:commandLink action="#{contactPersonController.update}" value="#{i18n.EditContactPersonSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{i18n.EditContactPersonViewLink}"/>
+                <br />
+                <h:commandLink action="#{contactPersonController.prepareList}" value="#{i18n.EditContactPersonShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.EditContactPersonIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.ListUserProjectActivityTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{i18n.ListUserProjectActivityEmpty}" rendered="#{userProjectActivityController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{userProjectActivityController.items.rowCount > 0}">
+                    <h:outputText value="#{userProjectActivityController.pagination.pageFirstItem + 1}..#{userProjectActivityController.pagination.pageLastItem + 1}/#{userProjectActivityController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{userProjectActivityController.previous}" value="#{i18n.Previous} #{userProjectActivityController.pagination.pageSize}" rendered="#{userProjectActivityController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{userProjectActivityController.next}" value="#{i18n.Next} #{userProjectActivityController.pagination.pageSize}" rendered="#{userProjectActivityController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{userProjectActivityController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListUserProjectActivityTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListUserProjectActivityTitle_budget}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.budget}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListUserProjectActivityTitle_user}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.user}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{i18n.ListUserProjectActivityTitle_projectActivity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.projectActivity}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{userProjectActivityController.prepareView}" value="#{i18n.ListUserProjectActivityViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{userProjectActivityController.prepareEdit}" value="#{i18n.ListUserProjectActivityEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{userProjectActivityController.destroy}" value="#{i18n.ListUserProjectActivityDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{userProjectActivityController.prepareCreate}" value="#{i18n.ListUserProjectActivityCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.ListUserProjectActivityIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

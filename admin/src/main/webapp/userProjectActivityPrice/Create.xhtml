@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.CreateUserProjectActivityPriceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{i18n.CreateUserProjectActivityPriceLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{userProjectActivityPriceController.selected.id}" title="#{i18n.CreateUserProjectActivityPriceTitle_id}" required="true" requiredMessage="#{i18n.CreateUserProjectActivityPriceRequiredMessage_id}"/>
+                    <h:outputLabel value="#{i18n.CreateUserProjectActivityPriceLabel_beginPeriod}" for="beginPeriod" />
+                    <h:inputText id="beginPeriod" value="#{userProjectActivityPriceController.selected.beginPeriod}" title="#{i18n.CreateUserProjectActivityPriceTitle_beginPeriod}" required="true" requiredMessage="#{i18n.CreateUserProjectActivityPriceRequiredMessage_beginPeriod}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{i18n.CreateUserProjectActivityPriceLabel_endPeriod}" for="endPeriod" />
+                    <h:inputText id="endPeriod" value="#{userProjectActivityPriceController.selected.endPeriod}" title="#{i18n.CreateUserProjectActivityPriceTitle_endPeriod}" required="true" requiredMessage="#{i18n.CreateUserProjectActivityPriceRequiredMessage_endPeriod}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{i18n.CreateUserProjectActivityPriceLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{userProjectActivityPriceController.selected.price}" title="#{i18n.CreateUserProjectActivityPriceTitle_price}" required="true" requiredMessage="#{i18n.CreateUserProjectActivityPriceRequiredMessage_price}"/>
+                    <h:outputLabel value="#{i18n.CreateUserProjectActivityPriceLabel_listCnt}" for="listCnt" />
+                    <h:inputText id="listCnt" value="#{userProjectActivityPriceController.selected.listCnt}" title="#{i18n.CreateUserProjectActivityPriceTitle_listCnt}" required="true" requiredMessage="#{i18n.CreateUserProjectActivityPriceRequiredMessage_listCnt}"/>
+                    <h:outputLabel value="#{i18n.CreateUserProjectActivityPriceLabel_userProjectActivity}" for="userProjectActivity" />
+                    <h:selectOneMenu id="userProjectActivity" value="#{userProjectActivityPriceController.selected.userProjectActivity}" title="#{i18n.CreateUserProjectActivityPriceTitle_userProjectActivity}" required="true" requiredMessage="#{i18n.CreateUserProjectActivityPriceRequiredMessage_userProjectActivity}">
+                        <f:selectItems value="#{userProjectActivityController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userProjectActivityPriceController.create}" value="#{i18n.CreateUserProjectActivityPriceSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{userProjectActivityPriceController.prepareList}" value="#{i18n.CreateUserProjectActivityPriceShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.CreateUserProjectActivityPriceIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

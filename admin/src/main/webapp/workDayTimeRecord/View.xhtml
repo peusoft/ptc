@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{i18n.ViewWorkDayTimeRecordTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{i18n.ViewWorkDayTimeRecordLabel_id}"/>
+                    <h:outputText value="#{workDayTimeRecordController.selected.id}" title="#{i18n.ViewWorkDayTimeRecordTitle_id}"/>
+                    <h:outputText value="#{i18n.ViewWorkDayTimeRecordLabel_beginTime}"/>
+                    <h:outputText value="#{workDayTimeRecordController.selected.beginTime}" title="#{i18n.ViewWorkDayTimeRecordTitle_beginTime}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{i18n.ViewWorkDayTimeRecordLabel_endTime}"/>
+                    <h:outputText value="#{workDayTimeRecordController.selected.endTime}" title="#{i18n.ViewWorkDayTimeRecordTitle_endTime}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{i18n.ViewWorkDayTimeRecordLabel_amountOfHours}"/>
+                    <h:outputText value="#{workDayTimeRecordController.selected.amountOfHours}" title="#{i18n.ViewWorkDayTimeRecordTitle_amountOfHours}"/>
+                    <h:outputText value="#{i18n.ViewWorkDayTimeRecordLabel_comment}"/>
+                    <h:outputText value="#{workDayTimeRecordController.selected.comment}" title="#{i18n.ViewWorkDayTimeRecordTitle_comment}"/>
+                    <h:outputText value="#{i18n.ViewWorkDayTimeRecordLabel_day}"/>
+                    <h:outputText value="#{workDayTimeRecordController.selected.day}" title="#{i18n.ViewWorkDayTimeRecordTitle_day}"/>
+                    <h:outputText value="#{i18n.ViewWorkDayTimeRecordLabel_userProjectActivityId}"/>
+                    <h:outputText value="#{workDayTimeRecordController.selected.userProjectActivityId}" title="#{i18n.ViewWorkDayTimeRecordTitle_userProjectActivityId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{workDayTimeRecordController.destroyAndView}" value="#{i18n.ViewWorkDayTimeRecordDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{i18n.ViewWorkDayTimeRecordEditLink}"/>
+                <br />
+                <h:commandLink action="#{workDayTimeRecordController.prepareCreate}" value="#{i18n.ViewWorkDayTimeRecordCreateLink}" />
+                <br />
+                <h:commandLink action="#{workDayTimeRecordController.prepareList}" value="#{i18n.ViewWorkDayTimeRecordShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{i18n.ViewWorkDayTimeRecordIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
